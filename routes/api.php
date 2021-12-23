@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\UserApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function(){
     return response('OK', 200);
 });
+
+
+
+Route::prefix('v1')
+    ->namespace('Api')
+    //->middleware('auth:api')
+    ->group(function () {
+
+        Route::get('/', function(){
+            return response('OK', 200);
+        });
+
+        Route::get('/user',  [UserApiController::class, 'index'])->name('show.user');
+
+        
+    });
+
+
+
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
