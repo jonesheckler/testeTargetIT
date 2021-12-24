@@ -33,9 +33,19 @@ class UserApiController extends Controller
    }
 
 
+    /* Cria novo usuário
+    /
+    */
+
+    public function update(StoreUser $request, $id){
+        $user = $this->userService->update($id, $request->all());
+        return new UserResource($user);
+    }
+
+
     /* Deletar usuário
-   /
-   */
+    /
+    */
 
    public function destroy($id){
         $user = $this->userService->destroy($id);

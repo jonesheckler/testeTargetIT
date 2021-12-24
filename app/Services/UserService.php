@@ -33,6 +33,22 @@ class UserService
 
 
     /*
+  /Editar usuário
+  */
+  public function update($id, array $data){
+    try {
+        $this->repository->update($id, $data);
+        return $this->repository->findById($id); 
+    } catch (\Throwable $th) {
+      return response()->json([
+          'message'   => 'Registro não encontrado',
+      ], 404);
+    } 
+}
+
+
+
+    /*
   /Deletar usuário
   */
   public function destroy(int $id){
