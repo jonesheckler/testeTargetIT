@@ -23,4 +23,12 @@ class UserService
   {
     return $this->repository->findById($id);
   }
+
+  /*
+  /Criar novo usuário
+  */
+  public function create(array $data){
+      return $this->repository->create($data);
+  }
+
 }

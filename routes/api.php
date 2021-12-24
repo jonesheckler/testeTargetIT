@@ -16,30 +16,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function(){
-    return response('OK', 200);
+
+// Route::get('/', function(){
+//     return response('OK - Funcionando', 200);
+// });
+
+
+
+
+Route::prefix('v1')->group(function () {
+    Route::post('user',  [UserApiController::class, 'store']);
+    Route::get('/user',  [UserApiController::class, 'index']);
+    
 });
 
 
-
-Route::prefix('v1')
-    ->namespace('Api')
-    //->middleware('auth:api')
-    ->group(function () {
-
-        Route::get('/', function(){
-            return response('OK', 200);
-        });
-
-        Route::get('/user',  [UserApiController::class, 'index'])->name('show.user');
-
-        
-    });
-
-
-
-
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
