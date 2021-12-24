@@ -64,16 +64,7 @@ class BaseEloquentRepository implements RepositoryInterface
 
   public function delete($id)
   {
-    $item = $this->entity->find($id);
-        if(!$item) {
-            return response()->json([
-                'message'   => 'Registro não encontrado',
-            ], 404);
-        }
-     $item->delete();
-      return response()->json([
-          'message'   => 'Registro deletado',
-      ], 200);
+    return $this->entity->findOrFail($id)->delete();
   }
 
 

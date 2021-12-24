@@ -36,7 +36,19 @@ class UserService
   /Deletar usuário
   */
   public function destroy(int $id){
-    return $this->repository->delete($id);
+
+    try {
+      $this->repository->delete($id);
+      return response()->json([
+              'message'   => 'Registro deletado',
+          ], 200);
+
+    } catch (\Throwable $th) {
+        return response()->json([
+            'message'   => 'Registro não encontrado',
+        ], 404);
+    }
+   
 }
 
 }
