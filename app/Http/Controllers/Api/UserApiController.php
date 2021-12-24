@@ -31,4 +31,15 @@ class UserApiController extends Controller
         $user = $this->userService->create($request->all());
         return new UserResource($user);
    }
+
+
+    /* Deletar usuário
+   /
+   */
+
+   public function destroy($id){
+        $user = $this->userService->destroy($id);
+        return $user;
+    }
+
 }

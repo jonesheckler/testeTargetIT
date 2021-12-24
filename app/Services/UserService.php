@@ -31,4 +31,12 @@ class UserService
       return $this->repository->create($data);
   }
 
+
+    /*
+  /Deletar usuário
+  */
+  public function destroy(int $id){
+    return $this->repository->delete($id);
+}
+
 }

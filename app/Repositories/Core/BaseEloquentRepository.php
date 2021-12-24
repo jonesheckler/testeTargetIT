@@ -23,7 +23,7 @@ class BaseEloquentRepository implements RepositoryInterface
 
   public function findById($id)
   {
-    return $this->entity->find($id);
+    return $this->entity->findOrFail($id);
   }
 
 
@@ -64,7 +64,16 @@ class BaseEloquentRepository implements RepositoryInterface
 
   public function delete($id)
   {
-    return $this->entity->find($id)->delete();
+    $item = $this->entity->find($id);
+        if(!$item) {
+            return response()->json([
+                'message'   => 'Registro não encontrado',
+            ], 404);
+        }
+     $item->delete();
+      return response()->json([
+          'message'   => 'Registro deletado',
+      ], 200);
   }
 
 
