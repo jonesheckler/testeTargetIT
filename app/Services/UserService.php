@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\Contracts\UserRepositoryInterface;
+use Illuminate\Support\Facades\Hash;
 
 class UserService
 {
@@ -28,6 +29,7 @@ class UserService
   /Criar novo usuário
   */
   public function create(array $data){
+      $data['password'] = Hash::make($data['password']);
       return $this->repository->create($data);
   }
 
