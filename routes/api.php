@@ -25,9 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('v1')->group(function () {
-    Route::post('user',  [UserApiController::class, 'store']);
-    Route::get('/user',  [UserApiController::class, 'index']);
-    
+    Route::resource('/user', UserApiController::class);
 });
 
 
