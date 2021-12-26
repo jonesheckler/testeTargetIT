@@ -18,7 +18,7 @@ class UserApiController extends Controller
    }
 
    // Retorna todos os usuários
-   public function index(){
+   public function all(){
       return  UserResource::collection($this->userService->getAll());
    }
 
