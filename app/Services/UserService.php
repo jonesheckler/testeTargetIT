@@ -46,6 +46,7 @@ class UserService
   */
   public function update($id, array $data){
     try {
+        $data['password'] = Hash::make($data['password']);
         $this->repository->update($id, $data);
         return $this->repository->findById($id); 
     } catch (\Throwable $th) {
