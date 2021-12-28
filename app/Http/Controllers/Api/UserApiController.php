@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUser;
 use App\Http\Resources\UserResource;
+use App\Http\Resources\UserWithAddressResource;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
@@ -19,8 +20,16 @@ class UserApiController extends Controller
 
    // Retorna todos os usuários
    public function all(){
-      return  UserResource::collection($this->userService->getAll());
+      return UserResource::collection($this->userService->getAll());
    }
+
+
+
+   // Retorna todos os usuários com endereço
+   public function allWithAddress(){
+    return  UserWithAddressResource::collection($this->userService->getAll());
+ }
+
 
 
    /* Cria novo usuário

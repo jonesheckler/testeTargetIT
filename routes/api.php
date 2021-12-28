@@ -32,6 +32,7 @@ Route::prefix('v1')->middleware('apiJwt')->group(function () {
 
 Route::prefix('v1')->middleware('ApiJwtAdmin')->group(function () {
     Route::get('/all_user', [UserApiController::class, 'all']);
+    Route::get('/all_user_with_address', [UserApiController::class, 'allWithAddress']);
 });
 
 

@@ -15,10 +15,17 @@ class UserService
     $this->repository = $repository;
   }
 
+/* Retornar todos os usuários 
+  /
+  */
   public function getAll()
   {
     return $this->repository->getAll();
   }
+
+  /* Retornar o usuario pelo ID
+  /
+  */
 
   public function getUserById($id)
   {

@@ -53,6 +53,11 @@ class User extends Authenticatable implements JWTSubject
     ];
 
 
+    public function endereco()
+    {
+        return $this->hasOne(Address::class, 'user_id');
+    }
+
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
